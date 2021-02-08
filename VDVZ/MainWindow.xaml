@@ -51,21 +51,12 @@
                     </DockPanel>
                     <DockPanel>
                         <Label Content="Подразделение"/>
-                        <ComboBox x:Name="EmployeeDivision" Width="100" HorizontalAlignment="Right" ItemsSource="{Binding Divisions}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock FlowDirection="LeftToRight">
-                                        <Run Text="{Binding ID}"/>
-                                        <Run Text="{Binding Name}"/>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                        <ComboBox x:Name="EmployeeDivision" Width="100" HorizontalAlignment="Right" ItemsSource="{Binding Divisions}" SelectedItem="{Binding SelectedEmployee.Division}"/>
                     </DockPanel>
                     <StackPanel>
                         <ComboBox Style="{StaticResource EditableComboBox}" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button x:Name="EditEmployeeButton" Content="Сохранить" Command="{Binding SaveEmployee}"/>
+                            <Button x:Name="SaveEmployeeButton" Content="Сохранить" Command="{Binding SaveEmployee}"/>
                             <Button x:Name="DeleteEmployeeButton" Content="Удалить" Command="{Binding DeleteEmployee}"/>
                         </StackPanel>
                     </StackPanel>
@@ -75,14 +66,14 @@
                 <StackPanel>
                     <DockPanel>
                         <Label Content="Название"/>
-                        <TextBox Width="100" HorizontalAlignment="Right"/>
+                        <TextBox Width="100" HorizontalAlignment="Right" Text="{Binding SelectedDivision.Name}"/>
                     </DockPanel>
                     <DockPanel>
                         <Label Content="Руководитель"/>
-                        <ComboBox Width="100" HorizontalAlignment="Right" Style="{StaticResource EditableComboBox}" ItemsSource="{Binding Employees}"/>
+                        <ComboBox Width="100" HorizontalAlignment="Right" Style="{StaticResource EditableComboBox}" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedDivision.Chief}"/>
                     </DockPanel>
                     <StackPanel>
-                        <ComboBox Style="{StaticResource EditableComboBox}" ItemsSource="{Binding Divisions}"/>
+                        <ComboBox Style="{StaticResource EditableComboBox}" ItemsSource="{Binding Divisions}" SelectedItem="{Binding SelectedDivision}"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button x:Name="SaveDivisionButton" Content="Сохранить" Command="{Binding SaveDivision}"/>
                             <Button x:Name="DeleteDivisionButton" Content="Удалить" Command="{Binding DeleteDivision}"/>
@@ -96,21 +87,21 @@
                 <StackPanel>
                     <DockPanel>
                         <Label Content="Название"/>
-                        <TextBox Width="100" HorizontalAlignment="Right"/>
+                        <TextBox Width="100" HorizontalAlignment="Right" Text="{Binding SelectedItem.Name}"/>
                     </DockPanel>
                     <DockPanel>
                         <Label Content="Количество"/>
-                        <TextBox Width="100" HorizontalAlignment="Right"/>
+                        <TextBox Width="100" HorizontalAlignment="Right" Text="{Binding SelectedItem.Quantity}"/>
                     </DockPanel>
                     <DockPanel>
                         <Label Content="Цена"/>
-                        <TextBox Width="100" HorizontalAlignment="Right"/>
+                        <TextBox Width="100" HorizontalAlignment="Right" Text="{Binding SelectedItem.Price}"/>
                     </DockPanel>
                     <StackPanel>
-                        <ComboBox Style="{StaticResource EditableComboBox}" ItemsSource="{Binding Items}"/>
+                        <ComboBox Style="{StaticResource EditableComboBox}" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button x:Name="SaveItemButton" Content="Сохранить" Command="{Binding }"/>
-                            <Button x:Name="DeleteItemButton" Content="Удалить" Command="{Binding }"/>
+                            <Button x:Name="SaveItemButton" Content="Сохранить" Command="{Binding SaveItem}"/>
+                            <Button x:Name="DeleteItemButton" Content="Удалить" Command="{Binding DeleteItem}"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -119,34 +110,25 @@
                 <StackPanel>
                     <DockPanel>
                         <Label Content="Контрагент"/>
-                        <TextBox Width="100" HorizontalAlignment="Right"/>
+                        <TextBox Width="100" HorizontalAlignment="Right" Text="{Binding SelectedOrder.Counterparty}"/>
                     </DockPanel>
                     <DockPanel>
                         <Label Content="Товар"/>
-                        <ComboBox Width="100" HorizontalAlignment="Right" ItemsSource="{Binding Items}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock FlowDirection="LeftToRight">
-                                        <Run Text="{Binding ID}"/>
-                                        <Run Text="{Binding Name}"/>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                        <ComboBox Width="100" HorizontalAlignment="Right" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedOrder.Item}"/>
                     </DockPanel>
                     <DockPanel>
                         <Label Content="Оформил(-а)"/>
-                        <ComboBox Width="100" HorizontalAlignment="Right" Style="{StaticResource EditableComboBox}"/>
+                        <ComboBox Width="100" HorizontalAlignment="Right" Style="{StaticResource EditableComboBox}" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedOrder.Author}"/>
                     </DockPanel>
                     <DockPanel>
                         <Label Content="Время заказа"/>
-                        <TextBox IsEnabled="False" Width="100" HorizontalAlignment="Right"/>
+                        <TextBox IsEnabled="False" Width="100" HorizontalAlignment="Right" Text="{Binding SelectedOrder.DateTime}"/>
                     </DockPanel>
                     <StackPanel>
-                        <ComboBox Style="{StaticResource EditableComboBox}" ItemsSource="{Binding Orders}"/>
+                        <ComboBox Style="{StaticResource EditableComboBox}" ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button x:Name="SaveOrderButton" Content="Сохранить" Command="{Binding }"/>
-                            <Button x:Name="DeleteOrderButton" Content="Удалить" Command="{Binding }"/>
+                            <Button x:Name="SaveOrderButton" Content="Сохранить" Command="{Binding SaveOrder}"/>
+                            <Button x:Name="DeleteOrderButton" Content="Удалить" Command="{Binding DeleteOrder}"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

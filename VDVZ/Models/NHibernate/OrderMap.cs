@@ -13,7 +13,7 @@ namespace VDVZ.Models.NHibernate
         {
             Id(order => order.ID);
             Map(order => order.Counterparty);
-            Map(order => order.DateTime).Default("now()");
+            Map(order => order.DateTime).Formula("now()");
             References(order => order.Author).Cascade.SaveUpdate();
             References(order => order.Item).Cascade.SaveUpdate();
         }

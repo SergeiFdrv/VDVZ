@@ -18,7 +18,7 @@ namespace VDVZ.Models.NHibernate
             Map(employee => employee.BirthDate);
             Map(employee => employee.Gender);
             References(employee => employee.Division).Cascade.SaveUpdate();
-            References(employee => employee.RunsDivision).Cascade.SaveUpdate();
+            //References(employee => employee.RunsDivision).Cascade.SaveUpdate();
             //HasMany(employee => employee.Orders).Inverse();
         }
     }

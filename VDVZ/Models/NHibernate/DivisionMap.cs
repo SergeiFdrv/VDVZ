@@ -14,7 +14,7 @@ namespace VDVZ.Models.NHibernate
             Id(division => division.ID);
             Map(division => division.Name);
             References(division => division.Chief).Cascade.SaveUpdate();
-            HasMany(division => division.Employees).Inverse();
+            //HasMany(division => division.Employees).Inverse();
         }
     }
 }
